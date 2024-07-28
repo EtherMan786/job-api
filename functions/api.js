@@ -128,6 +128,8 @@ app.delete('/jobs/:id', (req, res) => {
   }
 });
 
+app.use('/.netlify/functions/api', router);
+
 app.listen(port, () => {
   console.log(`Job API listening at http://localhost:${port}`);
 });
