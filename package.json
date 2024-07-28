@@ -2,14 +2,14 @@
     "name": "job-api",
     "version": "1.0.0",
     "description": "job-api",
-    "main": "index.js",
+    "main": "function/api.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Your Name",
     "license": "ISC",
     "dependencies": {
-      "express": "^4.17.1"
+        "express": "^4.19.2",
+        "serverless-http": "^3.2.0"
     }
-  }
-  
+}
