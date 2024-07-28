@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const router = express.Router();
 
 app.use(express.json());
-const router = express.Router();
 
 let jobs = [
   {
@@ -91,14 +91,18 @@ let jobs = [
     }
   }
 ];
+// TEST Conditions
+router.get('/', (req, res) => {
+    res.send('App is running..');
+  });
 
 // GET all jobs
-app.get('/jobs', (req, res) => {
+router.get('/jobs', (req, res) => {
   res.json({ jobs });
 });
 
 // POST a new job
-app.post('/jobs', (req, res) => {
+router.post('/jobs', (req, res) => {
   const job = req.body;
   job.id = (jobs.length + 1).toString(); // Assign a new ID
   jobs.push(job);
@@ -106,7 +110,7 @@ app.post('/jobs', (req, res) => {
 });
 
 // PUT (update) a job by id
-app.put('/jobs/:id', (req, res) => {
+router.put('/jobs/:id', (req, res) => {
   const jobId = req.params.id;
   const jobIndex = jobs.findIndex(j => j.id === jobId);
   if (jobIndex !== -1) {
@@ -118,7 +122,7 @@ app.put('/jobs/:id', (req, res) => {
 });
 
 // DELETE a job by id
-app.delete('/jobs/:id', (req, res) => {
+router.delete('/jobs/:id', (req, res) => {
   const jobId = req.params.id;
   const jobIndex = jobs.findIndex(j => j.id === jobId);
   if (jobIndex !== -1) {
